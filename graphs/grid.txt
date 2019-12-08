@@ -1,0 +1,8 @@
+Grid Test
+RASTER
+path ./maze.png
+neighbors 4
+channel r
+lowerThreshold 127
+naming x,y
+END
