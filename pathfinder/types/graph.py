@@ -37,6 +37,9 @@ class Graph(object):
             if mode == "NODES":
                 ls = cmd.split() #may add further words such as spatial coordinates
                 self.nodes.append(Node(ls[0]))
+                if (ls[2]):
+                    self.nodes[-1].x = float(ls[1])
+                    self.nodes[-1].y = float(ls[2])
                 continue
             if mode == "PATHS":
                 ls = cmd.split()
@@ -63,3 +66,6 @@ class Graph(object):
         for node in self.nodes:
             if node.name == name:
                 return node
+    def clear(self):
+        for node in self.nodes:
+            node.clear()

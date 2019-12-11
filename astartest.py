@@ -1,17 +1,17 @@
-from pathfinder.algorithms.dijkstra import findDijkstra
+from pathfinder.algorithms.aStar import findAStar
 from pathfinder.types.graph import *
 from timeit import timeit
 
 gr = Graph("./graphs/rm2019basic.txt")
 
-start = gr.get("1")
-goal = gr.get("8")
+start = gr.get("14")
+goal = gr.get("7")
 
-def findDijkstraCaller():
+def findAStarCaller():
     gr.clear()
-    findDijkstra(start, goal)
+    findAStar(start, goal)
 
-t = timeit(findDijkstraCaller, number=1000)
+t = timeit(findAStarCaller, number=1000)
 
 print("Execution took: " + str(t))
 
