@@ -1,8 +1,9 @@
 Grid Test
 RASTER
-path ./maze.png
+path ./maze1.png
 neighbors 4
 channel r
-lowerThreshold 127
+lowerThreshold 0
+upperThreshold 127
 naming x,y
 END

@@ -5,7 +5,9 @@ def findDijkstra(start, goal):
     start.before = None
     open = [start]
     closed = []
+    opcount = 0
     while len(open) > 0:
+        opcount += 1
         current = open[0]
         for path in current.paths:
             newcost = current.cost + path.cost
@@ -17,4 +19,4 @@ def findDijkstra(start, goal):
                     util.removeRef(closed, path.target)
         util.removeRef(open, current)
         closed.append(current)
-    return goal.cost
+    return (goal.cost, opcount)

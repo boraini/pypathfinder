@@ -7,12 +7,21 @@ import heapq
 
 def findAStar(start, goal):
     open = [start]
-    heapq.heapify(open)
+    q = PriorityQueue()
+    #heapq.heapify(open)
+    for item in open:
+        q.put(item)
     start.cost = 0
     start.heuristic = start.distManh(goal)
     start.before = None
+    opcount = 0
     while len(open) > 0:
-        current = heapq.heappop(open)
+        opcount += 1
+
+        #current = heapq.heappop(open)
+        current = q.get()
+        print("Path: ",end="")
+        print(current)
         for path in current.paths:
             newcost = current.cost + path.cost
             target = path.target
@@ -21,11 +30,13 @@ def findAStar(start, goal):
                 target.before = current
                 break
             if (newcost < target.cost):
-                heapq.heappush(open, path.target)
+                #heapq.heappush(open, path.target)
+                print(path.target)
+                q.put(path.target)
                 target.heuristic = target.distManh(goal)
                 target.before = current
                 target.cost = newcost
-    return goal.cost
+    return (goal.cost, opcount)
 
 # def nextPrior(ls, func):
 #     mostprior = 0
